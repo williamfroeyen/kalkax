@@ -9,9 +9,9 @@ export function prepInput(inputArray, negAllowed) {
     let regexAllowedChars = "";
 
     if (negAllowed === "true") {
-        regexAllowedChars = /^-?[0-9.,\s]*$/;
+        regexAllowedChars = /^-?[0-9.\s]*$/;
     } else {
-        regexAllowedChars = /^[0-9.,\s]*$/;
+        regexAllowedChars = /^[0-9.\s]*$/;
     };
 
     const allInputsValid = inputArray.every(input => regexAllowedChars.test(input.value));

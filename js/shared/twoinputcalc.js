@@ -25,18 +25,18 @@ function errorCheck() {
     
     if (numberArray === "invalidInput") {
         errorDiv.classList.remove("hidden");
-        errorTxt.textContent="Kun tall, komma og punktum er tillatt.";
+        errorTxt.textContent="Only numbers are allowed.";
 
     } else if (numberArray === "tooManyPeriods") {
         errorDiv.classList.remove("hidden");
-        errorTxt.textContent="Kun ett komma eller punktum er tillatt.";
+        errorTxt.textContent="Only one period is allowed.";
 
     } else if (numberArray) {
         const [input1, input2] = numberArray;
 
         if (noZero === "true" && (input1 === 0 || input2 === 0)) {
             errorDiv.classList.remove("hidden");
-            errorTxt.textContent="Ingen av verdiene kan være lik 0.";
+            errorTxt.textContent="None of the values can be 0.";
             
         } else {
             calculate(numberArray);
