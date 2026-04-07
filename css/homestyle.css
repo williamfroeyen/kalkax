@@ -1,0 +1,490 @@
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/font/Inter-Regular.woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    src: url("/font/Inter-Medium.woff2");
+    font-display: swap;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #000;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    color: #f1f1f1;
+}
+
+.hidden {
+    display: none !important;
+}
+
+header {
+    background-color: #000;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 100px;
+}
+
+.stortekst {
+    font-size: 20px;
+    margin: 5px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+.text-page {
+    margin-top: 50px !important;
+}
+
+.text-page p {
+    font-size: 18px;
+    padding: 5px 10px;
+}
+
+.text-page ul {
+    padding: 10px 0px 10px 30px;
+}
+
+.text-page h2 {
+    padding: 20px 0px 10px 0px;
+}
+
+.text-page h3 {
+    padding: 20px 0px 10px 0px;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+#menu {
+    display: block;
+    list-style-type: none;
+    padding: 23px;
+}
+
+#menu li {
+    display: inline-block;
+    margin-right: 50px;
+}
+
+#menu li a {
+    text-decoration: None;
+    color: #f1f1f1;
+    font-size: 18px;
+}
+
+#menu li a:hover {
+    color: #75ffed;
+}
+
+#showcase {
+    height: 300px;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,111,1) 61%);
+    text-align: center;
+    color: #f1f1f1;
+}
+
+#showcase h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 42px;
+    padding: 120px;
+}
+
+
+#search {
+    height: 40px;
+    margin: 50px;
+    text-align: center;
+}
+
+#search #searchinputfield {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+#search #searchinputfield #searchinput {
+    font-size: 16px;
+    height: 35px;
+    width: 300px;
+    border-radius: 3px;
+    border-width: 3px;
+    text-indent: 5px;
+}
+
+#search #searchinputfield #searchinput:focus {
+    border-color: #75ffed;
+    outline: none;
+}
+
+#search #searchinputfield #searchlabel {
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #f1f1f1;
+    padding: 4px;
+    font-size: 18px;
+    height: 35px;
+    width: 75px;
+    cursor: pointer;
+}
+
+#search #searchinputfield #searchlabel #searchlabeltext {
+    cursor: pointer;
+}
+
+#search .hidden {
+    display: none !important;
+}
+
+#search #searchresultfield {
+    position: relative;
+    z-index: 1000;
+    text-align: left;
+    background-color: rgb(0, 75, 68);
+    width: 355px;
+    border-radius: 5px;
+    margin: 20px auto;
+}
+
+#search #searchresultfield #searchresultlist {
+    list-style: none;
+    padding: 20px;
+}
+
+#search #searchresultfield #searchresultlist li {
+    padding: 3px;
+    font-size: 18px;
+}
+
+#search #searchresultfield #searchresultlist a {
+    color: #f1f1f1;
+    text-decoration: none;
+}
+
+#search #searchresultfield #searchresultlist a:hover {
+    color: #75ffed;
+}
+
+#selectcategory,
+#main-content {
+    width: 80vw;
+    margin: 0px auto;
+    background-color: #242424;
+}
+
+#main-content {
+    padding: 20px 30px 40px 30px;
+}
+
+#selectcategory {
+    padding: 30px 30px 0px 30px;
+}
+
+#selectcategory #categoryselectionfield {
+    padding: 10px 10px 30px 10px;
+}
+
+#selectcategory #categoryselectionfield .categoryselection {
+    display: inline-block;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: rgb(0, 75, 68);
+    color: #f1f1f1;
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#selectcategory #categoryselectionfield .categoryselected {
+    background-color: rgb(0, 128, 115);
+}
+
+#line {
+    background-color: #f1f1f1;
+    height: 1px;
+    width: auto;
+    margin: 0px 10px;
+}
+
+#selectcategory h2,
+#main-content h2 {
+    font-size: 26px;
+    padding: 10px;
+}
+
+#main-content h3 {
+    font-size: 22px;
+    padding: 10px 0px;
+}
+
+#categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.category-field {
+    padding: 10px 10px 20px 10px;
+}
+
+.category-field h2 {
+    padding-bottom: 5px;
+}
+
+.category-field ul {
+    list-style: none;
+}
+
+.category-field ul li {
+    padding-bottom: 3px;
+    margin-left: 5px;
+}
+
+.category-field ul li a {
+    text-decoration: None;
+    color: #d1fff9;
+    font-size: 18px;
+}
+
+.category-field ul li a:hover {
+    color: #6affeb;
+}
+
+.lispacer {
+    margin-bottom: 5px;
+}
+
+.paragraph {
+    padding-bottom: 15px;
+}
+
+#questions-title-margin {
+    margin-top: 40px;
+}
+
+#question-box {
+    padding: 15px;
+    background-color: rgb(0, 92, 84);
+    border-radius: 15px;
+    margin: 15px;
+    width: 40vw;
+}
+
+#question-box #question a {
+    text-decoration: none;
+    color: #f1f1f1;
+    font-size: 18px;
+}
+
+#question-box #question a:hover {
+    color: #75ffed;
+}
+
+footer #top-footer {
+    height: 50px;
+    background-color: rgb(0, 92, 84);
+    font-size: 18px;
+    margin-top: 50px;
+    text-align: center;
+    padding: 15px;
+}
+
+footer #top-footer a {
+    color: #d1fff9;
+    text-decoration: none;
+}
+
+footer #top-footer a:hover {
+    color: #8affef;
+}
+
+footer #bottom-footer {
+    position: relative;
+    height: 60px;
+    border-top: 5px;
+    background-color: rgb(0, 75, 68);
+    font-size: 18px;
+    text-align: center;
+    padding: 20px;
+    
+}
+
+footer #bottom-footer a {
+    position: absolute;
+    text-decoration: none;
+    color: #f1f1f1;
+}
+
+footer #bottom-footer a:hover {
+    color: #00e6c7;
+}
+
+footer #bottom-footer #footerFirstElement {
+    left: 10%;
+    top: 33%;
+}
+
+footer #bottom-footer #footerLastElement {
+    right: 10%;
+    top: 33%;
+}
+
+@media only screen and (max-width: 1000px) {
+    #categories {
+        grid-template-columns: 1fr 1fr;
+    }
+    header {
+        padding: 0px 50px;
+    }
+    #question-box {
+        width: 60vw;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    header #logo {
+        height: 60px;
+        width: 150px;
+    }
+    #showcase h1 {
+        font-size: 38px;
+    }
+    #menu {
+        padding: 20px 5px;
+    }
+    #menu li a {
+        font-size: 17px;
+    }
+}
+
+@media only screen and (max-width: 730px) {
+    #showcase h1 {
+        font-size: 34px;
+        padding: 125px 30px;
+    }
+    #categories {
+        grid-template-columns: 1fr;
+    }
+    header {
+        padding: 0px 10px;
+    }
+    footer #bottom-footer {
+        text-align: center;
+        height: 90px;
+        padding: 10px;
+    }
+    footer #bottom-footer p {
+        padding: 10px;
+    }
+    footer #bottom-footer #footerFirstElement {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-right: 10px;
+    }
+
+    footer #bottom-footer #footerLastElement {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-left: 10px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    #main-content {
+        padding: 20px 10px 40px 10px;
+    }
+
+    #selectcategory {
+        padding: 30px 10px 0px 10px;
+    }
+
+    #selectcategory #categoryselectionfield {
+        padding: 10px 0px 30px 0px;
+    }
+
+    header {
+        padding: 0px;
+    }
+    #menu li {
+        margin-right: 15px;
+    }
+    #question-box #question a {
+        font-size: 16px;
+    }
+    #question-box {
+        padding: 10px;
+        margin: 10px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    #showcase h1 {
+        font-size: 28px;
+        padding: 120px 20px;
+    }
+    #menu li {
+        margin-right: 10px;
+    }
+
+    #search #searchinputfield #searchinput {
+        width: 250px;
+    }
+
+    #search #searchresultfield {
+        width: 305px;
+    }
+}
+
+
+@media only screen and (max-width: 420px) {
+    #search {
+        margin: 50px 0px;
+    }
+
+    #search #searchinputfield #searchinput {
+        width: 200px;
+    }
+
+    #search #searchresultfield {
+        width: 255px;
+        margin: 20px auto;
+    }
+}

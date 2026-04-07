@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>Oscillations and Time to Period | Wave Calculator</title>
+    <meta name="description" content="Convert oscillations and time to period. Fast and accurate physics-calculator for waves."/>
+    <link rel="icon" type="image/png" href="/photos/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/photos/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/photos/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/photos/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/photos/favicon/site.webmanifest" />
+    <link rel="stylesheet" href="/css/calcstyle.css">
+</head>
+<body>
+    <header>
+        <a href="/index.html"><img id="logo" width="175" height="70" alt="Kalkax" src="/photos/logo/kalkax-70px.png"></a>
+        <nav aria-label="Main">
+            <ul id="menu">
+                <li>
+                    <a href="/index.html">Home</a>
+                </li>
+                <li>
+                    <a href="/contact.html">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section class="showcase" id="calc-showcase">
+        <h1>Oscillations and Time to Period</h1>
+    </section>
+    <main id="calculator">
+        <div>
+            <div class="input">
+                <p>Oscillations</p>
+                <input id="input1" type="text" inputmode="decimal" placeholder="total amount">
+            </div>
+            <div class="input">
+                <p>Total time</p>
+                <input id="input2" type="text" inputmode="decimal" placeholder="s">
+            </div>
+            <div id="oneResult">
+                <p id="oneResultText" data-formula="input2 / input1" data-decimals="3" data-text="Period:" data-unit="s" data-nozero="true">Period:</p>
+            </div>
+            <div id="errorMessageContainer" class="hidden">
+                <p id="errorMessageText"></p>
+            </div>
+            <div id="description">
+                <p class="paragraph">
+                    This calculator can be used to find the period of a wave. It uses the formula: Period = total time / number of oscillations. It works for both mechanical waves, like sound waves or waves on the ocean, as well as electromagnetic waves like visible light, infrared or UV-radiation.
+                </p>
+                <search id="search">
+                    <p>Search for other calculators:</p>
+                    <div id="searchinputfield">
+                        <div id="searchlabel">
+                            <p id="searchlabeltext">Search</p>
+                        </div>
+                        <input type="text" id="searchinput" placeholder="Search calculators…">
+                    </div>
+                    <div id="searchresultfield" class="hidden">
+                        <ul id="searchresultlist"></ul>
+                    </div>
+                </search>
+                Other calculators for waves and radiation:
+                <ul>
+                    <li><a href="/electromagnetism/wave-calculator.html">Wave calculator</a></li>
+                    <li><a href="/electromagnetism/oscillations-and-time-to-frequency.html">Oscillations and time to frequency</a></li>
+                    <li><a href="/electromagnetism/wiens-displacement-law-calculator.html">Wiens displacement law calculator</a></li>
+                    <li><a href="/electromagnetism/stefan-boltzmann-calculator.html">Stefan-Boltzmann calculator</a></li>
+                    <li><a href="/electromagnetism/magnetic-flux-calculator.html">Magnetic flux calculator</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div id="top-footer">
+            <p>Developed by <a href="https://github.com/williamfroeyen">William Frøyen</a></p>
+        </div>
+        <div id="bottom-footer">
+            <p>Copyright 2026 © Kalkax</p>
+            <a id="footerFirstElement" href="/terms-of-use.html">Terms of Use</a>
+            <a id="footerLastElement" href="/privacy-policy.html">Privacy Policy</a>
+        </div>
+    </footer>
+    <script src="../js/shared/twoinputcalc.js" type="module"></script>
+    <script src="../js/features/search.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0"></script>
+</body>
+</html>

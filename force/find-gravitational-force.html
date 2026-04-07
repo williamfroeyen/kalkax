@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>Gravitational Force (weight) Calculator | Fast and Precise</title>
+    <meta name="description" content="Find the gravitational force (weight) with this physics-calculator. Get accurate and fast results!">
+    <link rel="icon" type="image/png" href="/photos/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/photos/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/photos/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/photos/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/photos/favicon/site.webmanifest" />
+    <link rel="stylesheet" href="../css/calcstyle.css">
+</head>
+<body>
+    <header>
+        <a href="/index.html"><img id="logo" width="175" height="70" alt="Kalkax" src="/photos/logo/kalkax-70px.png"></a>
+        <nav aria-label="Main">
+            <ul id="menu">
+                <li>
+                    <a href="/index.html">Home</a>
+                </li>
+                <li>
+                    <a href="/contact.html">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section class="showcase" id="calc-showcase">
+        <h1>Find gravitational force</h1>
+    </section>
+    <main id="calculator">
+        <div>
+            <div class="input">
+                <p>Mass (kg)</p>
+                <input id="input1" type="text" placeholder="kg">
+            </div>
+            <div class="input">
+                <p>Gravitational acceleration (m/s²)</p>
+                <input id="input2" type="text" placeholder="m/s²" value="9.80665">
+            </div>
+            <div id="oneResult">
+                <p id="oneResultText" data-formula="input1 * input2" data-decimals="3" data-text="Force:" data-unit="N" data-nozero="false">Force:</p>
+            </div>
+            <div id="errorMessageContainer" class="hidden">
+                <p id="errorMessageText"></p>
+            </div>
+            <div id="description">
+                <p class="paragraph">
+                    The weight of an object, the gravitational force acting on it, is equal to its mass multiplied by the gravitational acceleration, G = m * g. At sea level on Earth, the gravitational acceleration is approximately 9.80665 m/s². This corresponds to the acceleration an object with a mass of 1 kg would have in free fall toward the Earth, assuming no air resistance.
+                </p>
+                <search id="search">
+                    <p>Search for other calculators:</p>
+                    <div id="searchinputfield">
+                        <div id="searchlabel">
+                            <p id="searchlabeltext">Search</p>
+                        </div>
+                        <input type="text" id="searchinput" placeholder="Search calculators…">
+                    </div>
+                    <div id="searchresultfield" class="hidden">
+                        <ul id="searchresultlist"></ul>
+                    </div>
+                </search>
+                Other calculators for force:
+                <ul>
+                    <li><a href="/kraft/find-sliding-friction.html">Find sliding friction</a></li>
+                    <li><a href="/force/find-buoyancy.html">Find buoyancy</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div id="top-footer">
+            <p>Developed by <a href="https://github.com/williamfroeyen">William Frøyen</a></p>
+        </div>
+        <div id="bottom-footer">
+            <p>Copyright 2026 © Kalkax</p>
+            <a id="footerFirstElement" href="/terms-of-use.html">Terms of Use</a>
+            <a id="footerLastElement" href="/privacy-policy.html">Privacy Policy</a>
+        </div>
+    </footer>
+    <script src="../js/shared/twoinputcalc.js" type="module"></script>
+    <script src="../js/features/search.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0"></script>
+</body>
+</html>

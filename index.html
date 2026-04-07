@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>Kalkax | Niche calculators</title>
+    <meta name="description" content="Kalkax provides niche calculators for fast and easy results. Free to use and user-friendly."/>
+    <link rel="icon" type="image/png" href="/photos/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/photos/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/photos/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/photos/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/photos/favicon/site.webmanifest" />
+    <link rel="stylesheet" href="/css/homestyle.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Jump to content</a>
+    <header>
+        <a href="/index.html"><img id="logo" width="175" height="70" alt="Kalkax" src="/photos/logo/kalkax-70px.png"></a>
+        <nav aria-label="Main">
+            <ul id="menu">
+                <li>
+                    <a href="/index.html">Home</a>
+                </li>
+                <li>
+                    <a href="/contact.html">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section id="showcase">
+        <h1>Niche calculators</h1>
+    </section>
+    <search id="search" role="search">
+        <div id="searchinputfield">
+            <label for="searchinput" id="searchlabel">Search</label>
+            <input type="text" id="searchinput" placeholder="Search calculators…">
+        </div>
+        <div id="searchresultfield" class="hidden">
+            <ul id="searchresultlist" aria-live="polite"></ul>
+        </div>
+    </search>
+    <section id="selectcategory">
+        <h2>Choose category</h2>
+        <div id="categoryselectionfield">
+            <button class="categoryselection categoryselected" data-category="alle" aria-pressed="true">
+                Every category
+            </button>
+            <button class="categoryselection" data-category="electromagnetism" aria-pressed="false">
+                Electromagnetism
+            </button>
+            <button class="categoryselection" data-category="force" aria-pressed="false">
+                Force
+            </button>
+            <button class="categoryselection" data-category="miscellaneous" aria-pressed="false">
+                Miscellaneous
+            </button>
+        </div>
+        <div id="line"></div>
+    </section>
+    <main id="main-content">
+        <div id="categories">
+            <div class="category-field" data-category="electromagnetism">
+                <h3>Electromagnetism</h3>
+                <ul>
+                    <li class="lispacer"><a href="/electromagnetism/wave-calculator.html">Wave calculator</a></li>
+                    <li><a href="/electromagnetism/oscillations-and-time-to-period.html">Oscillations and time to period</a></li>
+                    <li class="lispacer"><a href="/electromagnetism/oscillations-and-time-to-frequency.html">Oscillations and time to frequency</a></li>
+                    <li><a href="/electromagnetism/wiens-displacement-law-calculator.html">Wiens displacement law calculator</a></li>
+                    <li class="lispacer"><a href="/electromagnetism/stefan-boltzmann-calculator.html">Stefan-Boltzmann calculator</a></li>
+                    <li><a href="/electromagnetism/magnetic-flux-calculator.html">Magnetic flux calculator</a></li>
+                </ul>
+                </ul>
+            </div>
+            <div class="category-field" data-category="force">
+                <h3>Force</h3>
+                <ul>
+                    <li><a href="/force/find-gravitational-force.html">Find gravitational force</a></li>
+                    <li><a href="/force/find-sliding-friction.html">Find sliding friction</a></li>
+                    <li><a href="/force/find-buoyancy.html">Find buoyancy</a></li>
+                </ul>
+            </div>
+            <div class="category-field" data-category="miscellaneous">
+                <h3>Miscellaneous</h3>
+                <ul>
+                    <li><a href="/miscellaneous/dog-age-calculator.html">Dog-age calculator</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div id="top-footer">
+            <p>Developed by <a href="https://github.com/williamfroeyen">William Frøyen</a></p>
+        </div>
+        <div id="bottom-footer">
+            <p>Copyright 2026 © Kalkax</p>
+            <a id="footerFirstElement" href="/terms-of-use.html">Terms of Use</a>
+            <a id="footerLastElement" href="/privacy-policy.html">Privacy Policy</a>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0"></script>
+    <script src="/js/features/search.js"></script>
+    <script src="/js/features/selectcategory.js"></script>
+</body>
+</html>

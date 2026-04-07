@@ -1,0 +1,531 @@
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/font/Inter-Regular.woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    src: url("/font/Inter-Medium.woff2");
+    font-display: swap;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+*:disabled {
+  background-color: #f1f1f1;
+  color: #000;
+  opacity: 1;
+}
+
+body {
+    background-color: #000;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    color: #f1f1f1;
+}
+
+header {
+    background-color: #000;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 100px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#menu {
+    display: block;
+    list-style-type: none;
+    padding: 23px;
+}
+
+#menu li {
+    display: inline-block;
+    margin-right: 50px;
+}
+
+#menu li a {
+    text-decoration: None;
+    color: #f1f1f1;
+    font-size: 18px;
+}
+
+#menu li a:hover {
+    color: #75ffed;
+}
+
+#calc-showcase {
+    height: 270px;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,111,1) 61%);
+}
+
+#calc-showcase h1 {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 42px;
+    padding: 100px;
+}
+
+#calculator {
+    width: 50vw;
+    margin: 50px auto;
+    background-color: #242424;
+    padding: 30px;
+}
+
+#calculator .input,
+#calculator .output {
+    padding: 10px;
+    width: auto;
+    display: inline-block;
+    font-size: 20px;
+}
+
+#calculator .input input,
+#calculator .output input {
+    height: 30px;
+    width: 140px;
+    font-size: 16px;
+    border-radius: 5px;
+    color: #000;
+}
+
+#calculator .input input {
+    background-color: #f1f1f1;
+}
+
+#calculator .output input {
+    background-color: #e0e0e0;
+}
+
+#calculator .input input:focus {
+    outline: 0;
+    border-width: 3px;
+    border-color: #75ffed;
+}
+
+#calculator .output input:focus {
+    outline: 2px solid rgb(0, 75, 68);
+}
+
+#calculator #spacer {
+    height: 20px;
+}
+
+#calculator #oneResult {
+    background-color: rgb(0, 75, 68);
+}
+
+#calculator #errorMessageContainer {
+    background-color: rgb(150, 57, 57);
+}
+
+#calculator #errorMessageContainer,
+#calculator #oneResult {
+    width: 250px;
+    height: auto;
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+
+#calculator #switch-link {
+    display: inline-block;
+    width: 25px;
+}
+
+#calculator #switch-icon {
+    border: 1px solid #f1f1f1;
+    border-radius: 5px;
+    width: 25px;
+    height: 25px;
+}
+
+#calculator #switch-icon:hover {
+    filter: invert(20%) sepia(50%) saturate(300%) hue-rotate(120deg);
+}
+
+#radioRow {
+    padding: 10px;
+    display: block;
+}
+
+#calculator #description {
+    padding: 30px 10px;
+    font-size: 18px;
+    line-height: 35px;
+}
+
+#calculator #description h2 {
+    margin: 10px 0px;
+}
+
+#calculator #description img {
+    width: 100%;
+    padding: 20px 0px;
+    height: auto;
+}
+
+#calculator #description a {
+    text-decoration: none;
+    color: #00e6c7;
+}
+
+#calculator #description a:hover {
+    text-decoration: none;
+    color: #8affef;
+}
+
+#calculator #description #tablecontainer {
+    overflow-x: auto;
+}
+
+#calculator #description table {
+    margin: 40px 0px;
+    border-collapse: collapse;
+}
+
+#calculator #description table td,
+#calculator #description table th {
+    text-align: left;
+    padding: 3px 10px;
+    border: 2px solid #00e6c7;
+}
+
+#calculator #errorMessageText {
+    font-size: 18px;
+}
+
+#calculator #textareastatcontainer h2 {
+    font-size: 22px;
+    padding: 20px 10px 10px 10px;
+}
+
+#calculator #textareastatcontainer p {
+    font-size: 18px;
+    padding: 5px 10px 20px 10px;
+}
+
+#calculator #textareastatcontainer #textareastat {
+    font-size: 18px;
+    width: 100%;
+    height: 200px;
+    resize: none;
+    padding: 10px;
+    margin: 10px;
+}
+
+#calculator ul {
+    margin-left: 30px;
+    list-style: square;
+    margin-bottom: 20px;
+}
+
+#calculator #table {
+    margin-bottom: 20px;
+}
+
+#calculator #null {
+    color: #b1ffe1
+}
+
+#calculator #en {
+    color: #faffb1
+}
+
+#calculator #to {
+    color: #ffd0b1
+}
+
+#calculator #tre {
+    color: #ffb1b1
+}
+
+#calculator h2 {
+    font-size: 22px;
+}
+
+.paragraph {
+    padding-bottom: 15px;
+}
+
+.ad-slot {
+    width: 100%;
+    min-height: 250px; 
+}
+
+.ad-slot-1 {
+    margin-top: 30px;
+}
+
+#search {
+    height: 40px;
+    margin-top: 30px;
+    margin-bottom: 70px;
+}
+
+#search #searchinputfield {
+    display: flex;
+    justify-content: left;
+    gap: 8px;
+}
+
+#search #searchinputfield #searchinput {
+    font-size: 16px;
+    height: 35px;
+    width: 300px;
+    border-radius: 3px;
+    border-width: 3px;
+    text-indent: 5px;
+}
+
+#search #searchinputfield #searchinput:focus {
+    border-color: #75ffed;
+    outline: none;
+}
+
+#search #searchinputfield #searchlabel {
+    position: relative;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #f1f1f1;
+    height: 35px;
+    width: 75px;
+    cursor: pointer;
+}
+
+#search #searchinputfield #searchlabel #searchlabeltext {
+    position: absolute;
+    top: -2px;
+    left: 6px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#search #searchresultfield {
+    position: relative;
+    z-index: 1000;
+    text-align: left;
+    background-color: rgb(0, 75, 68);
+    width: 355px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#search #searchresultfield #searchresultlist {
+    list-style: none;
+    margin: 0px;
+    padding: 20px;
+}
+
+#search #searchresultfield #searchresultlist li {
+    padding: 3px;
+    font-size: 18px;
+}
+
+#search #searchresultfield #searchresultlist a {
+    color: #f1f1f1;
+    text-decoration: none;
+}
+
+#search #searchresultfield #searchresultlist a:hover {
+    color: #75ffed;
+}
+
+footer #top-footer {
+    height: 50px;
+    background-color: rgb(0, 92, 84);
+    font-size: 18px;
+    margin-top: 50px;
+    text-align: center;
+    padding: 15px;
+}
+
+footer #top-footer a {
+    color: #d1fff9;
+    text-decoration: none;
+}
+
+footer #top-footer a:hover {
+    color: #8affef;
+}
+
+footer #bottom-footer {
+    position: relative;
+    height: 60px;
+    border-top: 5px;
+    background-color: rgb(0, 75, 68);
+    font-size: 18px;
+    text-align: center;
+    padding: 20px;
+}
+
+footer #bottom-footer a {
+    position: absolute;
+    text-decoration: none;
+    color: #f1f1f1;
+}
+
+footer #bottom-footer a:hover {
+    color: #75ffed;
+}
+
+footer #bottom-footer #footerFirstElement {
+    left: 10%;
+    top: 33%;
+}
+
+footer #bottom-footer #footerLastElement {
+    right: 10%;
+    top: 33%;
+}
+
+@media only screen and (max-width: 1200px) {
+    #calculator {
+        width: 70vw;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    #calc-showcase h1 {
+        font-size: 32px;
+        padding: 110px 80px;
+    }
+    #calculator {
+        width: 80vw;
+    }
+    header {
+        padding: 0px 50px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    header #logo {
+        height: 60px;
+        width: 150px;
+    }
+    #calc-showcase h1 {
+        font-size: 28px;
+        padding: 120px 50px;
+    }
+    #menu {
+        padding: 20px 5px;
+    }
+    #menu li a {
+        font-size: 17px;
+    }
+}
+
+@media only screen and (max-width: 730px) {
+    #calc-showcase h1 {
+        font-size: 24px;
+        padding: 120px 40px;
+    }
+    #calculator {
+        width: 90vw;
+        margin: 30px auto;
+    }
+    footer #bottom-footer {
+        text-align: center;
+        height: 90px;
+        padding: 10px;
+    }
+    footer #bottom-footer p {
+        padding: 10px;
+    }
+    footer #bottom-footer #footerFirstElement {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-right: 10px;
+    }
+
+    footer #bottom-footer #footerLastElement {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-left: 10px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    #calculator {
+        width: 95vw;
+        margin: 20px auto;
+    }
+    header {
+        padding: 0px;
+    }
+    #menu li {
+        margin-right: 15px;
+    }
+    #calculator #description table {
+        margin: 10px 0px 20px 0px;
+    }
+    #calculator #description table td,
+    #calculator #description table th {
+        padding: 3px 10px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    #calc-showcase h1 {
+        padding: 110px 40px;
+    }
+    #calculator #description table {
+        font-size: 14px;
+    }
+    .ad-slot {
+        min-height: 400px;
+    }
+    #menu li {
+        margin-right: 10px;
+    }
+
+    #search #searchinputfield #searchinput {
+        width: 200px;
+    }
+
+    #search #searchresultfield {
+        width: 255px;
+    }
+}
+
+@media only screen and (max-width: 433px) {
+    #calculator #switch-link {
+        display: block;
+        padding: 10px 0px 0px 10px;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    #calculator {
+        padding: 20px;
+    }
+
+    #search #searchinputfield #searchinput {
+        width: 170px;
+    }
+
+    #search #searchresultfield {
+        width: 225px;
+    }
+
+    #search #searchresultfield #searchresultlist {
+        padding: 15px;
+    }
+}

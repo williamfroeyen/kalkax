@@ -1,0 +1,14 @@
+[
+  {"title":"Find gravitational force","url":"/force/find-gravitational-force.html","category":"Force"},
+  {"title":"Find buoyancy","url":"/force/find-buoyancy.html","category":"Force"},
+  {"title":"Find sliding friction","url":"/force/find-sliding-friction.html","category":"Force"},
+
+  {"title":"Wave calculator","url":"/electromagnetism/wave-calculator.html","category":"Electromagnetism"},
+  {"title":"Oscillations and time to period","url":"/electromagnetism/oscillations-and-time-to-period.html","category":"Electromagnetism"},
+  {"title":"Oscillations and time to frequency","url":"/electromagnetism/oscillations-and-time-to-frequency.html","category":"Electromagnetism"},
+  {"title":"Stefan-Boltzmann calculator","url":"/electromagnetism/stefan-boltzmann-calculator.html","category":"Electromagnetism"},
+  {"title":"Wiens displacement law calculator","url":"/electromagnetism/wiens-displacement-law-calculator.html","category":"Electromagnetism"},
+  {"title":"Magnetic flux calculator","url":"/electromagnetism/magnetic-flux-calculator.html","category":"Electromagnetism"},
+
+  {"title":"Dog-age calculator","url":"/miscellaneous/dog-age-calculator.html","category":"Miscellaneous"}
+]

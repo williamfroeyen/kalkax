@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>Stefan-Boltzmann Law Calculator | Fast and Precise</title>
+    <meta name="description" content="Find the radiation exitance (emittance) or temperature. Accurate and fast physics-calculator."/>
+    <link rel="icon" type="image/png" href="/photos/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/photos/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/photos/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/photos/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/photos/favicon/site.webmanifest" />
+    <link rel="stylesheet" href="/css/calcstyle.css">
+</head>
+<body>
+    <header>
+        <a href="/index.html"><img id="logo" width="175" height="70" alt="Kalkax" src="/photos/logo/kalkax-70px.png"></a>
+        <nav aria-label="Main">
+            <ul id="menu">
+                <li>
+                    <a href="/index.html">Home</a>
+                </li>
+                <li>
+                    <a href="/contact.html">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section class="showcase" id="calc-showcase">
+        <h1>Stefan-Boltzmanns lov</h1>
+    </section>
+    <main id="calculator">
+        <div>
+            <div id="rowOne">
+                <h2>Temperature to radiant exitance</h2>
+                <div class="input">
+                    <p>Temperature</p>
+                    <input id="tempinput" type="number" inputmode="decimal" placeholder="Kelvin">
+                </div>
+                <div class="input">
+                    <p>Radiant exitance</p>
+                    <input id="exitoutput" type="text" inputmode="decimal" placeholder="W/m^2" disabled="">
+                </div>
+            </div>
+            <div id="spacer"></div>
+            <h2>Radiant exitance to temperature</h2>
+            <div id="rowTwo">
+                <div class="input">
+                    <p>Radiant exitance</p>
+                    <input id="exitinput" type="number" inputmode="decimal" placeholder="W/m^2">
+                </div>
+                <div class="input">
+                    <p>Temperature</p>
+                    <input id="tempoutput" type="text" inputmode="decimal" placeholder="Kelvin" disabled="">
+                </div>
+            </div>
+            <div id="description">
+                <p class="paragraph">
+                    It is possible to use scientific notation with this calculator, such as 3.3e19 for 3.3 * 10^19. The calculator finds the radiant exitance (W/m²) or temperature (in kelvin) of a black body. The formula is: U = &sigma;T<sup>4</sup>. This law is known as Stefan-Boltzmann's law. Stefan-Boltzmann's constant (&sigma;) is equal to 5.670 374 419 * 10^-8 W*m^(-2)*K^(-4).  
+                </p>
+                <search id="search">
+                    <p>Search for other calculators:</p>
+                    <div id="searchinputfield">
+                        <div id="searchlabel">
+                            <p id="searchlabeltext">Search</p>
+                        </div>
+                        <input type="text" id="searchinput" placeholder="Search calculators…">
+                    </div>
+                    <div id="searchresultfield" class="hidden">
+                        <ul id="searchresultlist"></ul>
+                    </div>
+                </search>
+                Other calculators for waves and radiation:
+                <ul>
+                    <li><a href="/electromagnetism/wave-calculator.html">Wave calculator</a></li>
+                    <li><a href="/electromagnetism/oscillations-and-time-to-period.html">Oscillations and time to period</a></li>
+                    <li><a href="/electromagnetism/oscillations-and-time-to-frequency.html">Oscillations and time to frequency</a></li>
+                    <li><a href="/electromagnetism/wiens-displacement-law-calculator.html">Wiens displacement law calculator</a></li>
+                    <li><a href="/electromagnetism/magnetic-flux-calculator.html">Magnetic flux calculator</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div id="top-footer">
+            <p>Developed by <a href="https://github.com/williamfroeyen">William Frøyen</a></p>
+        </div>
+        <div id="bottom-footer">
+            <p>Copyright 2026 © Kalkax</p>
+            <a id="footerFirstElement" href="/terms-of-use.html">Terms of Use</a>
+            <a id="footerLastElement" href="/privacy-policy.html">Privacy Policy</a>
+        </div>
+    </footer>
+    <script src="../js/standalone/stefan-boltzmann-calculator.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0"></script>
+</body>
+</html>
