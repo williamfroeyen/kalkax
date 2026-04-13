@@ -36,7 +36,7 @@
                 <h2>Temperature to peak wavelength</h2>
                 <div class="input">
                     <p>Temperature</p>
-                    <input id="tempinput" type="number" inputmode="decimal" placeholder="Kelvin">
+                    <input id="tempinput" type="text" inputmode="decimal" placeholder="Kelvin">
                 </div>
                 <div class="input">
                     <p>Peak wavelength</p>
@@ -48,16 +48,19 @@
             <div id="rowTwo">
                 <div class="input">
                     <p>Peak wavelength</p>
-                    <input id="peakwaveinput" type="number" inputmode="decimal" placeholder="Wavelength (m)">
+                    <input id="peakwaveinput" type="text" inputmode="decimal" placeholder="Wavelength (m)">
                 </div>
                 <div class="input">
                     <p>Temperature</p>
                     <input id="tempoutput" type="text" inputmode="decimal" placeholder="Kelvin" readonly>
                 </div>
             </div>
+            <div id="errorMessageContainer" class="hidden">
+                <p id="errorMessageText"></p>
+            </div>
             <div id="description">
                 <p class="paragraph">
-                    You can use scientific notation with this calculator, such as 3.3e19 for 3.3 * 10^19. This calculator uses Wien's Displacement Law to find the relationship between peak wavelength and temperature. The formula is: &lambda;<sub>max</sub> * T = a. &lambda;<sub>max</sub> is the wavelength at which the body emits photons with the maximum intensity, and T is the absolute temperature of the body. The constant a is equal to: 2.8977 * 10^-3 m*K. 
+                    You can use scientific e-notation with this calculator, such as 3.3e19 for 3.3 * 10^19. This calculator uses Wien's Displacement Law to find the relationship between peak wavelength and temperature. The formula is: &lambda;<sub>max</sub> * T = a. &lambda;<sub>max</sub> is the wavelength at which the body emits photons with the maximum intensity, and T is the absolute temperature of the body. The constant a is equal to: 2.8977 * 10^-3 m*K. 
                 </p>
                 <search id="search">
                     <p>Search for other calculators:</p>
@@ -92,7 +95,7 @@
             <a id="footerLastElement" href="/privacy-policy.html">Privacy Policy</a>
         </div>
     </footer>
-    <script src="../js/standalone/wiens-displacement-law-calculator.js"></script>
+    <script src="../js/standalone/wiens-displacement-law-calculator.js" type="module"></script>
     <script src="../js/features/search.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0"></script>
 </body>

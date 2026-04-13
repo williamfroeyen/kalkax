@@ -36,7 +36,7 @@
                 <h2>Temperature to radiant exitance</h2>
                 <div class="input">
                     <p>Temperature</p>
-                    <input id="tempinput" type="number" inputmode="decimal" placeholder="Kelvin">
+                    <input id="tempinput" type="text" inputmode="decimal" placeholder="Kelvin">
                 </div>
                 <div class="input">
                     <p>Radiant exitance</p>
@@ -48,12 +48,15 @@
             <div id="rowTwo">
                 <div class="input">
                     <p>Radiant exitance</p>
-                    <input id="exitinput" type="number" inputmode="decimal" placeholder="W/m^2">
+                    <input id="exitinput" type="text" inputmode="decimal" placeholder="W/m^2">
                 </div>
                 <div class="input">
                     <p>Temperature</p>
                     <input id="tempoutput" type="text" inputmode="decimal" placeholder="Kelvin" disabled="">
                 </div>
+            </div>
+            <div id="errorMessageContainer" class="hidden">
+                <p id="errorMessageText"></p>
             </div>
             <div id="description">
                 <p class="paragraph">
@@ -92,7 +95,7 @@
             <a id="footerLastElement" href="/privacy-policy.html">Privacy Policy</a>
         </div>
     </footer>
-    <script src="../js/standalone/stefan-boltzmann-calculator.js"></script>
+    <script src="../js/standalone/stefan-boltzmann-calculator.js" type="module"></script>
     <script src="../js/search.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0"></script>
 </body>

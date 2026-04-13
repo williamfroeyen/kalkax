@@ -1,25 +1,56 @@
-const tempinput = document.querySelector("#tempinput");
-tempinput.addEventListener("input", (e) => {
-    const normalizedValue = e.target.value.replace(',', '');
-    const inputValue = parseFloat(normalizedValue);
-    let outputValue = "";
-    let finalresult = "";
-    if (!isNaN(inputValue)) {
-        outputValue = 2.898e-3 / inputValue;
-        finalresult = String(outputValue.toExponential(6));
-    };
-    document.querySelector("#peakwaveoutput").value = finalresult;
-});
+import { validateExponential, prepExpOutput } from '../core/calcfunctions.js';
 
+const tempinput = document.querySelector("#tempinput");
 const peakwaveinput = document.querySelector("#peakwaveinput");
-peakwaveinput.addEventListener("input", (e) => {
-    const normalizedValue = e.target.value.replace(',', '');
-    const inputValue = parseFloat(normalizedValue);
-    let outputValue = "";
-    let finalresult = "";
-    if (!isNaN(inputValue)) {
-        outputValue = 2.898e-3 / inputValue;
-        finalresult = String(outputValue.toExponential(6));
+const tempoutput = document.querySelector("#tempoutput");
+const peakwaveoutput = document.querySelector("#peakwaveoutput");
+
+const errorDiv = document.querySelector("#errorMessageContainer");
+const errorTxt = document.querySelector("#errorMessageText");
+
+const WIEN = 2.898e-3;
+const outputDecimals = 5;
+
+tempinput.addEventListener("input", (e) => handleInput(e, "tempinput"));
+peakwaveinput.addEventListener("input", (e) => handleInput(e, "peakwaveinput"));
+
+function handleInput(e, inputType) {
+    errorDiv.classList.add("hidden");
+    errorTxt.textContent="";
+
+    const inputString = e.target.value;
+    const preppedResult = validateExponential(inputString);
+
+    if (inputType === "tempinput") {
+        peakwaveoutput.value = "";
+        
+    } else if (inputType === "peakwaveinput") {
+        tempoutput.value = "";
     };
-    document.querySelector("#tempoutput").value = finalresult;
-});
+
+    if (preppedResult === false) return;
+    
+    if (preppedResult === "invalidFormat") {
+        errorDiv.classList.remove("hidden");
+        errorTxt.textContent="Only numbers and scientific e-notation is allowed";
+        return;
+    };
+
+    calculate(preppedResult, inputType);
+};
+
+function calculate(preppedNum, inputType) {
+    const calculated = WIEN / preppedNum;
+    output(calculated, inputType);
+};
+
+function output(calculated, inputType) {
+    const finalresult = prepExpOutput(calculated, outputDecimals);
+
+    if (inputType === "tempinput") {
+        peakwaveoutput.value = finalresult;
+        
+    } else if (inputType === "peakwaveinput") {
+        tempoutput.value = finalresult;
+    };
+};

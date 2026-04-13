@@ -48,3 +48,28 @@ export function rounding(value, decimals) {
     const finalString = String(roundedValue);
     return finalString;
 };
+
+
+export function validateExponential(inputString) {
+    const regexAllowedFormat = /^[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?$/;
+
+    if (inputString === "") {
+        return false;
+
+    } else if (regexAllowedFormat.test(inputString)) {
+        const inputNum = Number(inputString);
+        return inputNum;
+
+    } else {
+       return "invalidFormat";
+    };
+};
+
+export function prepExpOutput(value, decimals) {
+    if (value > 1_000_000 || value < 0.001) {
+        return String(value.toExponential(6));
+    } else {
+        return rounding(value, decimals);
+    };
+};
+
