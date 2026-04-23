@@ -1,157 +1,182 @@
-let outputItems = [];
-let wavespeedOutput;
-let frequencyOutput;
-let wavelengthOutput;
-let periodOutput;
-let photonenergy;
-let radiationtype;
-let plancksconstant = 6.62607e-34;
+import { prepInput, prepExpOutput } from '../core/calcfunctions.js';
 
-const frequencyInputElement = document.querySelector("#frequencyInputElement");
-const periodInputElement = document.querySelector("#periodInputElement");
-const wavelengthInputElement = document.querySelector("#wavelengthInputElement");
-const wavespeedInputElement = document.querySelector("#wavespeedInputElement");
-const electromagneticOption = document.querySelector("#wavetypeRadioElement1");
-const mechanicalOption = document.querySelector("#wavetypeRadioElement2");
-
+const frequency = document.querySelector("#frequencyInputElement");
+const period = document.querySelector("#periodInputElement");
+const wavelength = document.querySelector("#wavelengthInputElement");
+const wavespeed = document.querySelector("#wavespeedInputElement");
+const emOption = document.querySelector("#wavetypeRadioElement1");
+const mechOption = document.querySelector("#wavetypeRadioElement2");
 const resultsList = document.querySelector("#resultsList");
 
-frequencyInputElement.addEventListener("input", updateResult);
-periodInputElement.addEventListener("input", updateResult);
-wavelengthInputElement.addEventListener("input", updateResult);
-wavespeedInputElement.addEventListener("input", updateResult);
-electromagneticOption.addEventListener("input", updateResult);
-mechanicalOption.addEventListener("input", updateResult);
+const plancksconstant = 6.62607e-34;
+const outputDecimals = 5;
+const expDecimals = 6;
 
-function updateResult() {
-    frequencyOutput = periodOutput = wavelengthOutput = wavespeedOutput = photonenergy = undefined;
-    outputItems = [];
+frequency.addEventListener("input", handleInput);
+period.addEventListener("input", handleInput);
+wavelength.addEventListener("input", handleInput);
+wavespeed.addEventListener("input", handleInput);
+emOption.addEventListener("input", handleInput);
+mechOption.addEventListener("input", handleInput);
+
+function handleInput() {
+    errorMessageContainer.classList.add("hidden");
+    resultsList.innerHTML = "";
+
+    const elementArray = [frequency, period, wavelength, wavespeed];
+    const filteredArray = elementArray.filter(element => isFilled(element));
+    const numberArray = prepInput(filteredArray);
+
+    errorCheck(numberArray);
+};
+
+function errorCheck(numberArray) {
+    const f = isFilled(frequency);
+    const p = isFilled(period);
+    const ws = isFilled(wavespeed);
+    const wl = isFilled(wavelength);
     
-    const normalizedfrequencyInputElement = frequencyInputElement.value.replace(',', '');
-    const normalizedperiodInputElement = periodInputElement.value.replace(',', '');
-    const normalizedwavelengthInputElement = wavelengthInputElement.value.replace(',', '');
-    const normalizedwavespeedInputElement = wavespeedInputElement.value.replace(',', '');
+    if (numberArray === "invalidInput") {
+        displayError("Only numbers and one period is allowed");
+        return false;
 
-    let frequencyInput = parseFloat(normalizedfrequencyInputElement);
-    let periodInput = parseFloat(normalizedperiodInputElement);
-    let wavelengthInput = parseFloat(normalizedwavelengthInputElement);
-    let wavespeedInput = parseFloat(normalizedwavespeedInputElement);
-
-    if (isConflict(frequencyInput, periodInput, wavelengthInput, wavespeedInput)) {
+    } else if (numberArray === "tooManyPeriods") {
+        displayError("Only one period is allowed");
+        return false;
+    };
+    
+    if (frequency.value === "0" || period.value === "0" || wavelength.value === "0" || wavespeed.value === "0") {
+        displayError("The values can't be zero");
         return;
     };
 
-    // PERIOD AND FREQUENCY
-    if (!isNaN(frequencyInput) && isNaN(periodInput) && isNaN(wavelengthInput) && isNaN(wavespeedInput)) {
-            periodOutput = 1 / frequencyInput;
-            frequencyOutput = frequencyInput;
-            prepareResult("noerrors", "justfrequencyperiod");
-    } else if (isNaN(frequencyInput) && !isNaN(periodInput)) {
-        if (isNaN(wavelengthInput) && isNaN(wavespeedInput)) {
-            frequencyOutput = 1 / periodInput;
-            periodOutput = periodInput;
-            prepareResult("noerrors", "justfrequencyperiod");
-        } else { // CONVERT PERIOD TO FREQUENCY
-            frequencyOutput = 1 / periodInput;
-            frequencyInput = frequencyOutput;
-        } 
+    if (f && p) {
+        displayError("Fill either frequency, or period");
+        return;
     };
 
-    // WAVE SPEED, WAVELENGTH AND FREQUENCY
-    if ((!isNaN(frequencyInput) || !isNaN(periodInput)) && !isNaN(wavelengthInput)) {
-        wavespeedOutput = frequencyInput * wavelengthInput;
-        frequencyOutput = frequencyInput;
-        wavelengthOutput = wavelengthInput;
-        periodOutput = 1 / frequencyOutput;
-            prepareResult("noerrors", "twoinputs");
-    } else if (!isNaN(wavespeedInput) && !isNaN(wavelengthInput)) {
-        frequencyOutput = wavespeedInput / wavelengthInput;
-        wavespeedOutput = wavespeedInput;
-        wavelengthOutput = wavelengthInput;
-        periodOutput = 1 / frequencyOutput;
-            prepareResult("noerrors", "twoinputs");
-    } else if (!isNaN(wavespeedInput) && (!isNaN(frequencyInput) || !isNaN(periodInput))) {
-        wavelengthOutput = wavespeedInput / frequencyInput;
-        wavespeedOutput = wavespeedInput;
-        frequencyOutput = frequencyInput;
-        periodOutput = 1 / frequencyOutput;
-            prepareResult("noerrors", "twoinputs");
+    if (wl && ws && (f || p)) {
+        displayError("Fill no more than two fields");
+        return;
     };
 
-    if (isNaN(frequencyInput) && isNaN(periodInput) && isNaN(wavelengthInput) && isNaN(wavespeedInput)) {
-        resultsList.innerHTML = "";
-    } else if (isNaN(frequencyInput) && isNaN(periodInput) && !isNaN(wavelengthInput) && isNaN(wavespeedInput)) {
-        resultsList.innerHTML = "";
-    } else if (isNaN(frequencyInput) && isNaN(periodInput) && isNaN(wavelengthInput) && !isNaN(wavespeedInput)) {
-        resultsList.innerHTML = "";
+    if (!f && !p && !(ws && wl)) {
+        return;
     };
+
+    const calcType = findCalcType(f, p, ws, wl);
+    calculate(calcType, numberArray);
 };
 
-function isConflict(frequencyInput, periodInput, wavelengthInput, wavespeedInput) {
-    if (!isNaN(frequencyInput) && !isNaN(periodInput)) {
-        prepareResult("frequencyperiodconflict");
-        return true;
-    } else if ((!isNaN(frequencyInput) || !isNaN(periodInput))&& !isNaN(wavelengthInput) && !isNaN(wavespeedInput)) {
-        prepareResult("threeinputconflict");
-        return true;
-    } else {
-        return false;
-    }
-}
+function findCalcType(f, p, ws, wl) {
+    if (f && !ws && !wl) { return "p-from-f" };
+    if (p && !wl && !ws) { return "f-from-p" };
 
-function prepareResult(error, inputtype) {
-    if (electromagneticOption.checked) {
-        photonenergy = plancksconstant * frequencyOutput;
-            if (frequencyOutput >= 3e19) {
-                radiationtype = "Gamma radiation";
-            } else if (frequencyOutput >= 3e16) {
-                radiationtype = "X-rays";
-            } else if (frequencyOutput >= 7.5e14) {
-                radiationtype = "Ultraviolet radiation";
-            } else if (frequencyOutput >= 4e14) {
-                radiationtype = "Visible light";
-            } else if (frequencyOutput >= 3e11) {
-                radiationtype = "Infrared radiation";
-            } else if (frequencyOutput >= 3e8) {
-                radiationtype = "Microwaves";
-            } else {
-                radiationtype = "Radio waves";
-        }
-    };
+    if (f && ws && !wl) { return "wl-from-f-and-ws" };
+    if (f && wl && !ws) { return "ws-from-f-and-wl" };
 
-    // CHECK FOR ERRORS
-    if (error === "frequencyperiodconflict") {
-        outputItems = ["Error:", "Fill either period, or frequency"];
-    } else if (error === "threeinputconflict") {
-        outputItems = ["Error:", "Fill no more than two fields"];
-    } else if (error === "noerrors") {
-        // CHECK IF TWO INPUTS OR JUST FREQUENCY OR PERIOD
-        if (inputtype === "twoinputs") {
-            // CHECK IF ELECTROMAGNETIC RADIATION OR NOT
-            if (electromagneticOption.checked) {
-                outputItems = [`Frequency: ${frequencyOutput} Hz`, `Period: ${periodOutput} s`, `Wavelength: ${wavelengthOutput} m`, `Wave speed: ${wavespeedOutput} m/s`,
-                    `Photon energy: ${photonenergy} J` , `Radiation type: ${radiationtype}`
-                ];
-            } else if (mechanicalOption.checked) {
-                outputItems = [`Frequency: ${frequencyOutput} Hz`, `Period: ${periodOutput} s`, `Wavelength: ${wavelengthOutput} m`, `Wave speed: ${wavespeedOutput} m/s`];
-            }
-        } else if (inputtype === "justfrequencyperiod") {
-            // CHECK IF ELECTROMAGNETIC RADIATION OR NOT
-            if (electromagneticOption.checked) {
-                outputItems = [`Frequency: ${frequencyOutput} Hz`, `Period: ${periodOutput} s`, `Photon energy: ${photonenergy} J`, `Radiation type: ${radiationtype}`];
-            } else if (mechanicalOption.checked) {
-                outputItems = [`Frequency: ${frequencyOutput} Hz`, `Period: ${periodOutput} s`];
-            }
-        }
-    }
-    renderList(outputItems);
+    if (p && ws && !wl) { return "wl-from-p-and-ws" };
+    if (p && wl && !ws) { return "ws-from-p-and-wl" };
+
+    if (ws && wl) { return "f-and-p-from-wl-and-ws" };
+
 };
 
-function renderList(outputItems) {
+function isFilled(element) {
+    return element.value !== "";
+};
+
+function calculate(calcType, numberArray) {
+    let f, p, wl, ws = undefined;
+
+    switch (calcType) {
+        case "p-from-f":
+            [f] = numberArray;
+            p = 1 / f;
+            break;
+        case "f-from-p":
+            [p] = numberArray;
+            f = 1 / p;
+            break;
+        case "wl-from-f-and-ws":
+            [f, ws] = numberArray;
+            p = 1 / f;
+            wl = ws / f;
+            break;
+        case "ws-from-f-and-wl":
+            [f, wl] = numberArray;
+            p = 1 / f;
+            ws = f * wl;
+            break;
+        case "wl-from-p-and-ws":
+            [p, ws] = numberArray;
+            f = 1 / p;
+            wl = ws / f;
+            break;
+        case "ws-from-p-and-wl":
+            [p, wl] = numberArray;
+            f = 1 / p;
+            ws = f * wl;
+            break;
+        case "f-and-p-from-wl-and-ws":
+            [wl, ws] = numberArray;
+            f = ws / wl;
+            p = 1 / f;
+            break;
+    };
+    
+    prepareOutput(f, p, wl, ws);
+};
+
+function prepareOutput(f, p, wl, ws) {
+    let outputItems = [];
+
+    outputItems.push(`Frequency: ${prepExpOutput(f, outputDecimals, expDecimals)} Hz`);
+    outputItems.push(`Period: ${prepExpOutput(p, outputDecimals, expDecimals)} s`);
+
+    if (wl !== undefined && ws !== undefined) {
+        outputItems.push(`Wavelength: ${prepExpOutput(wl, outputDecimals, expDecimals)} m`);
+        outputItems.push(`Wave speed: ${prepExpOutput(ws, outputDecimals, expDecimals)} m/s`);
+    };
+
+    if (emOption.checked) {
+        let radiationtype;
+        const photonenergy = plancksconstant * f;
+
+        if (f >= 3e19) {
+            radiationtype = "Gamma radiation";
+        } else if (f >= 3e16) {
+            radiationtype = "X-rays";
+        } else if (f >= 7.5e14) {
+            radiationtype = "Ultraviolet radiation";
+        } else if (f >= 4e14) {
+            radiationtype = "Visible light";
+        } else if (f >= 3e11) {
+            radiationtype = "Infrared radiation";
+        } else if (f >= 3e8) {
+            radiationtype = "Microwaves";
+        } else {
+            radiationtype = "Radio waves";
+        };
+
+        outputItems.push(`Photon energy: ${prepExpOutput(photonenergy, outputDecimals, expDecimals)} J`);
+        outputItems.push(`Radiation type: ${radiationtype}`);
+    };
+
+    renderOutput(outputItems);
+};
+
+
+function renderOutput(outputItems) {
     resultsList.innerHTML = "";
     outputItems.forEach(item => {
         const li = document.createElement("li");
-        li.textContent = String(item);
+        li.textContent = item;
         resultsList.appendChild(li);
     });
+};
+
+function displayError(message) {
+    errorMessageContainer.classList.remove("hidden");
+    errorMessageText.textContent = message;
 };

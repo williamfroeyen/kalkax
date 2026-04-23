@@ -10,6 +10,7 @@ const errorTxt = document.querySelector("#errorMessageText");
 
 const STEFAN = 5.670374419e-8;
 const outputDecimals = 5;
+const expDecimals = 6;
 
 tempinput.addEventListener("input", (e) => handleInput(e, "tempinput"));
 exitinput.addEventListener("input", (e) => handleInput(e, "exitinput"));
@@ -52,7 +53,7 @@ function calculate(preppedNum, inputType) {
 };
 
 function output(calculated, inputType) {
-    const finalresult = prepExpOutput(calculated, outputDecimals);
+    const finalresult = prepExpOutput(calculated, outputDecimals, expDecimals);
 
     if (inputType === "tempinput") {
         exitoutput.value = finalresult;

@@ -35,21 +35,21 @@
             <div id="rowOne">
                 <div class="input">
                     <p>Frequency</p>
-                    <input id="frequencyInputElement" type="number" inputmode="decimal" placeholder="Hz">
+                    <input id="frequencyInputElement" type="text" inputmode="decimal" placeholder="Hz">
                 </div>
                 <div class="input">
                     <p>Period</p>
-                    <input id="periodInputElement" type="number" inputmode="decimal" placeholder="s">
+                    <input id="periodInputElement" type="text" inputmode="decimal" placeholder="s">
                 </div>
             </div>
             <div id="rowTwo">
                 <div class="input">
                     <p>Wavelength</p>
-                    <input id="wavelengthInputElement" type="number" inputmode="decimal" placeholder="m">
+                    <input id="wavelengthInputElement" type="text" inputmode="decimal" placeholder="m">
                 </div>
                 <div class="input">
                     <p>Wave speed</p>
-                    <input id="wavespeedInputElement" type="number" inputmode="decimal" placeholder="m/s">
+                    <input id="wavespeedInputElement" type="text" inputmode="decimal" placeholder="m/s">
                 </div>
             </div>
             <div id="radioRow">
@@ -61,6 +61,9 @@
                     <input type="radio" id="wavetypeRadioElement2" name="wavetypeoption" value="mechanic">
                     <label for="wavetypeoption2">Mechanical wave</label>
                 </div>
+            </div>
+            <div id="errorMessageContainer" class="hidden">
+                <p id="errorMessageText"></p>
             </div>
             <ul id="resultsList">
             </ul>
@@ -101,7 +104,7 @@
             <a id="footerLastElement" href="/privacy-policy.html">Privacy Policy</a>
         </div>
     </footer>
-    <script src="../js/standalone/wave-calculator.js"></script>
+    <script src="../js/standalone/wave-calculator.js" type="module"></script>
     <script src="../js/features/search.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0"></script>
 </body>

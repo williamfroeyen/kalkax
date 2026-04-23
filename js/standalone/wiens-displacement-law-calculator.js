@@ -10,6 +10,7 @@ const errorTxt = document.querySelector("#errorMessageText");
 
 const WIEN = 2.898e-3;
 const outputDecimals = 5;
+const expDecimals = 6;
 
 tempinput.addEventListener("input", (e) => handleInput(e, "tempinput"));
 peakwaveinput.addEventListener("input", (e) => handleInput(e, "peakwaveinput"));
@@ -45,7 +46,7 @@ function calculate(preppedNum, inputType) {
 };
 
 function output(calculated, inputType) {
-    const finalresult = prepExpOutput(calculated, outputDecimals);
+    const finalresult = prepExpOutput(calculated, outputDecimals, expDecimals);
 
     if (inputType === "tempinput") {
         peakwaveoutput.value = finalresult;
