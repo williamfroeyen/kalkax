@@ -10,5 +10,10 @@
   {"title":"Wiens displacement law calculator","url":"/electromagnetism/wiens-displacement-law-calculator.html","category":"Electromagnetism"},
   {"title":"Magnetic flux calculator","url":"/electromagnetism/magnetic-flux-calculator.html","category":"Electromagnetism"},
 
+  {"title":"Current and voltage to power","url":"/electricity/current-and-voltage-to-power.html","category":"Electricity"},
+  {"title":"Resistance and current to voltage","url":"/electricity/resistance-and-current-to-voltage.html","category":"Electricity"},
+  {"title":"Voltage and current to resistance","url":"/electricity/voltage-and-current-to-resistance.html","category":"Electricity"},
+  {"title":"Voltage and resistance to current","url":"/electricity/voltage-and-resistance-to-current.html","category":"Electricity"},
+
   {"title":"Dog-age calculator","url":"/miscellaneous/dog-age-calculator.html","category":"Miscellaneous"}
 ]

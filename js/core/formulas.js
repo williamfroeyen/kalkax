@@ -1,4 +1,38 @@
 export const formulaTable = {
+    // ELECTRICITY
+    "current-and-voltage-to-power": {
+        formula: (x, y) => x * y,
+        decimals: 3,
+        noZero: false,
+        neg: false,
+        unit: "W",
+        prefix: "Power:"
+    },
+    "resistance-and-current-to-voltage": {
+        formula: (x, y) => x * y,
+        decimals: 3,
+        noZero: false,
+        neg: false,
+        unit: "V",
+        prefix: "Voltage:"
+    },
+    "voltage-and-current-to-resistance": {
+        formula: (x, y) => x / y,
+        decimals: 3,
+        noZero: true,
+        neg: false,
+        unit: "Ω",
+        prefix: "Resistance:"
+    },
+    "voltage-and-resistance-to-current": {
+        formula: (x, y) => x / y,
+        decimals: 3,
+        noZero: true,
+        neg: false,
+        unit: "A",
+        prefix: "Current:"
+    },
+
     // ELECTROMAGNETISM
     "magnetic-flux-calculator": {
         formula: (x, y, z) => {
