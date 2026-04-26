@@ -11,6 +11,7 @@ const errorTxt = document.querySelector("#errorMessageText");
 const STEFAN = 5.670374419e-8;
 const outputDecimals = 5;
 const expDecimals = 6;
+const noZero = false;
 
 tempinput.addEventListener("input", (e) => handleInput(e, "tempinput"));
 exitinput.addEventListener("input", (e) => handleInput(e, "exitinput"));
@@ -20,7 +21,7 @@ function handleInput(e, inputType) {
     errorTxt.textContent="";
 
     const inputString = e.target.value;
-    const preppedResult = validateExponential(inputString);
+    const preppedResult = validateExponential(inputString, noZero);
 
     if (inputType === "tempinput") {
         exitoutput.value = "";

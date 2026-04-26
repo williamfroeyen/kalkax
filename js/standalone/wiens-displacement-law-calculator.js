@@ -11,6 +11,7 @@ const errorTxt = document.querySelector("#errorMessageText");
 const WIEN = 2.898e-3;
 const outputDecimals = 5;
 const expDecimals = 6;
+const noZero = true;
 
 tempinput.addEventListener("input", (e) => handleInput(e, "tempinput"));
 peakwaveinput.addEventListener("input", (e) => handleInput(e, "peakwaveinput"));
@@ -20,7 +21,7 @@ function handleInput(e, inputType) {
     errorTxt.textContent="";
 
     const inputString = e.target.value;
-    const preppedResult = validateExponential(inputString);
+    const preppedResult = validateExponential(inputString, noZero);
 
     if (inputType === "tempinput") {
         peakwaveoutput.value = "";
@@ -34,6 +35,12 @@ function handleInput(e, inputType) {
     if (preppedResult === "invalidFormat") {
         errorDiv.classList.remove("hidden");
         errorTxt.textContent="Only numbers and scientific e-notation is allowed";
+        return;
+    };
+
+    if (preppedResult === "isZero") {
+        errorDiv.classList.remove("hidden");
+        errorTxt.textContent="Verdien 0 er ikke tillatt";
         return;
     };
 

@@ -61,8 +61,13 @@ function cleanString(input) {
     return toPeriod;
 };
 
-export function validateExponential(inputString) {
-    const regexAllowedFormat = /^[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?$/;
+export function validateExponential(inputString, noZero) {
+    const regexAllowedFormat = /^[0-9]+(\.[0-9]*)?([eE][-+]?[0-9]+)?$/;
+    const regexValueZero = /^0+(\.0*)?$/;
+
+    if (noZero === true && regexValueZero.test(inputString)) {
+        return "isZero";
+    };
 
     if (inputString === "") {
         return false;
